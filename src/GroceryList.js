@@ -1,7 +1,7 @@
 import React, { useEffect, useState, forwardRef, useImperativeHandle } from 'react';
 const GroceryList = forwardRef((props, ref) => {
   const [items, setItems] = useState([]);
-  const API_URL = 'http://localhost:3500/items';
+  const API_URL = 'http://localhost:5000/items';
   const fetchItems = async () => {
     try {
       const response = await fetch(API_URL);

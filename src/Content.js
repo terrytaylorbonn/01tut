@@ -1,3 +1,4 @@
+// filepath: /c:/Users/terry/Downloads/react_intro_gray/01tut/src/Content.js
 import React, { useState } from 'react';
 const Content = ({ refreshGroceryList, addItem }) => {
   const [name, setName] = useState('name1');
@@ -19,7 +20,7 @@ const Content = ({ refreshGroceryList, addItem }) => {
     console.log(e.target.innerText);
   };
   const handleAddItem = () => {
-    const newItem = { id: Date.now(), name: `Item ${Date.now()}` };
+    const newItem = { name: `Item ${Date.now()}` };
     addItem(newItem);
   };
   return (
