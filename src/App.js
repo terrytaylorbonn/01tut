@@ -1,25 +1,17 @@
-//App.js 
-// import logo from './logo.svg';
-import Header from './Header';
-import Content from './Content';
-import Footer from './Footer';
-import { useEffect } from 'react';
-import GroceryList from './GroceryList';
+//App.js
 import React, { useRef } from 'react';
-
+import GroceryList from './GroceryList';
+import Content from './Content';
 function App() {
-  const API_URL = 'http://localhost:3500/items';
   const groceryListRef = useRef();
-
-
   return (
     <div className="App">
-      <Header />
-      <Content refreshGroceryList={() => groceryListRef.current.refreshList()} />
+      <Content 
+        refreshGroceryList={() => groceryListRef.current.refreshList()} 
+        addItem={(newItem) => groceryListRef.current.addItem(newItem)} 
+      />
       <GroceryList ref={groceryListRef} />
-      <Footer />
     </div>
   );
 }
-
 export default App;

@@ -1,9 +1,7 @@
 import React, { useEffect, useState, forwardRef, useImperativeHandle } from 'react';
-
 const GroceryList = forwardRef((props, ref) => {
   const [items, setItems] = useState([]);
   const API_URL = 'http://localhost:3500/items';
-
   const fetchItems = async () => {
     try {
       const response = await fetch(API_URL);
@@ -14,15 +12,29 @@ const GroceryList = forwardRef((props, ref) => {
       console.log(err.stack);
     }
   };
-
+  const addItem = async (newItem) => {
+    try {
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newItem)
+      });
+      if (response.ok) {
+        fetchItems(); // Refresh the list after adding a new item
+      }
+    } catch (err) {
+      console.log(err.stack);
+    }
+  };
   useImperativeHandle(ref, () => ({
-    refreshList: fetchItems
+    refreshList: fetchItems,
+    addItem: addItem
   }));
-
   useEffect(() => {
     fetchItems();
   }, []);
-
   return (
     <div>
       <h1>Grocery List</h1>
@@ -34,5 +46,4 @@ const GroceryList = forwardRef((props, ref) => {
     </div>
   );
 });
-
 export default GroceryList;
