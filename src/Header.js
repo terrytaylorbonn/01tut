@@ -2,8 +2,10 @@
 import React from 'react'
 
 const Header = () => {
+
   return (
-    <header><h1>groceries list</h1></header>
+    <header>
+      <h1>groceries list</h1></header>
   )
 }
 
