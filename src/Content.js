@@ -17,9 +17,9 @@ const Content = () => {
   const handleClick2 = (name) => {
     console.log(count);
   }
-  const handleClick3 = (e) => {
-    console.log(e.target.innerText);
-  }
+  // const handleClick3 = (e) => {
+  //   console.log(e.target.innerText);
+  // }
   return (
     <main>
       <p onDoubleClick={handleClick } >hello {name}</p>
